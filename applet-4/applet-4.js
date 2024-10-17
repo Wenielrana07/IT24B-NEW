@@ -57,5 +57,4 @@ class StudentDirectory {
     
 }
  
-
-}
+const studentDirectory = new StudentDirectory('applet-4.json');
