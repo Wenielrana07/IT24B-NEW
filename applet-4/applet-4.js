@@ -1,60 +1,56 @@
-class StudentDirectory {
-         
-    constructor(apiUrl) {
-        this.apiUrl = apiUrl;
-        this.studentData = [];
-        this.initialize();
+class StudentList {
+    constructor(dataUrl) {
+        this.dataUrl = dataUrl;
+        this.students = [];
+        this.init();
     }
 
-
-    async initialize() {
-        await this.loadStudentData();
-        this.displayStudentList(this.studentData); 
-        this.setupSearchListener();
+    async init() {
+        await this.fetchData();
+        this.renderStudentList(this.students); 
+        this.bindSearchEvent();
     }
 
-
-    async loadStudentData() {
+    async fetchData() {
         try {
-            const response = await fetch(this.apiUrl);
-            this.studentData = await response.json();
+            const response = await fetch(this.dataUrl);
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            this.students = await response.json();
         } catch (error) {
-            console.error('Error loading student data:', error);
+            console.error('Error fetching data:', error);
         }
     }
 
-    displayStudentList(students) {
-        const listContainer = document.getElementById('studentList');
-        listContainer.innerHTML = students.map(student => 
-            `<button class="btn btn-primary my-2" style="width:25rem">
-                ${student.student_name} | ${student.student_program}
-            </button>`
+    renderStudentList(students) {
+        const studentListContainer = document.getElementById('studentList');
+        studentListContainer.innerHTML = students.map(student => 
+            `<button class="btn btn-primary" style="margin-top:15px; width:25rem">
+                ${student.student_name} | ${student.student_program} | ${student.student_enrolled_date}
+            </button><br>`
         ).join('');
     }
 
-    setupSearchListener() {
-        const searchInput = document.getElementById('studentSearchBar');
-        const searchResultsContainer = document.getElementById('studentSearchList');
+    bindSearchEvent() {
+        const studentSearchBar = document.getElementById('studentSearchBar');
+        const studentSearchListContainer = document.getElementById('studentSearchList');
 
-        searchInput.addEventListener('input', () => {
-            this.searchStudents(searchInput.value, searchResultsContainer);
+        studentSearchBar.addEventListener('input', () => {
+            this.filterStudents(studentSearchBar.value, studentSearchListContainer);
         });
-
-        this.displayStudentList(this.studentData, searchResultsContainer);
     }
 
-    
-    searchStudents(query, resultsContainer) {
-        const matchedStudents = this.studentData.filter(student => {
-            const fullInfo = `${student.student_name} ${student.student_program}`;
-            return fullInfo.toLowerCase().includes(query.toLowerCase());
+    filterStudents(query, searchListContainer) {
+        const filteredStudents = this.students.filter(student => {
+            const studentDetails = `${student.student_name} ${student.student_program} ${student.student_enrolled_date}`;
+            return studentDetails.toLowerCase().includes(query.toLowerCase());
         });
 
-        resultsContainer.innerHTML = '';
-
-        this.displayStudentList(matchedStudents, resultsContainer);
+        searchListContainer.innerHTML = '';
+        this.renderStudentList(filteredStudents, searchListContainer);
     }
-    
 }
- 
-const studentDirectory = new StudentDirectory('applet-4.json');
+
+
+const studentList = new StudentList('applet4.json');
