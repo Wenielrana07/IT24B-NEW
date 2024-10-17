@@ -22,6 +22,15 @@ class StudentDirectory {
             console.error('Error loading student data:', error);
         }
     }
+
+    displayStudentList(students) {
+        const listContainer = document.getElementById('studentList');
+        listContainer.innerHTML = students.map(student => 
+            `<button class="btn btn-primary my-2" style="width:25rem">
+                ${student.student_name} | ${student.student_program}
+            </button>`
+        ).join('');
+    }
  
 
 }
