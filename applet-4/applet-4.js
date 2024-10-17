@@ -42,6 +42,20 @@ class StudentDirectory {
 
         this.displayStudentList(this.studentData, searchResultsContainer);
     }
+
+    
+    searchStudents(query, resultsContainer) {
+        const matchedStudents = this.studentData.filter(student => {
+            const fullInfo = `${student.student_name} ${student.student_program}`;
+            return fullInfo.toLowerCase().includes(query.toLowerCase());
+        });
+
+        resultsContainer.innerHTML = '';
+
+        this.displayStudentList(matchedStudents, resultsContainer);
+    }
+    
+}
  
 
 }
