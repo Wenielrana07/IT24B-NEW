@@ -5,4 +5,11 @@
         "student_program": "BS-Computer Science",
         "student_enrolled_date": "2023-01-10"
       },
+
+      {
+        "student_id": 2,
+        "student_name": "Giovanny",
+        "student_program": "BS-Computer Science",
+        "student_enrolled_date": "2023-01-10"
+      },
 ]
