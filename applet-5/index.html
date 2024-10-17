@@ -46,5 +46,24 @@
 </nav>
 <body>
     
+    <div class="container">
+        <h1 class="text-center">Weather App</h1>
+
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" id="cityInput" placeholder="Enter city name" />
+            <button class="btn btn-primary" id="getWeatherBtn">Get Weather</button>
+            <button class="btn btn-secondary" id="getLocationBtn">Use My Location</button>
+        </div>
+
+        <div id="weatherCard" class="weather-card">
+            <h2 id="cityName" class="text-center"></h2>
+            <p id="temperature"></p>
+            <p id="description"></p>
+            <p id="humidity"></p>
+            <p id="windSpeed"></p>
+        </div>
+    </div>
+
+    <script src="applet-5.js"></script>
 </body>
 </html>
