@@ -31,6 +31,17 @@ class StudentDirectory {
             </button>`
         ).join('');
     }
+
+    setupSearchListener() {
+        const searchInput = document.getElementById('studentSearchBar');
+        const searchResultsContainer = document.getElementById('studentSearchList');
+
+        searchInput.addEventListener('input', () => {
+            this.searchStudents(searchInput.value, searchResultsContainer);
+        });
+
+        this.displayStudentList(this.studentData, searchResultsContainer);
+    }
  
 
 }
