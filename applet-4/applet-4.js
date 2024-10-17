@@ -13,6 +13,7 @@ class StudentList {
 
     async fetchData() {
         try {
+            console.log('Fetching data from:', this.dataUrl); // Log the URL
             const response = await fetch(this.dataUrl);
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
@@ -52,5 +53,4 @@ class StudentList {
     }
 }
 
-
-const studentList = new StudentList('applet4.json');
+const studentList = new StudentList('applet-4.json'); 
