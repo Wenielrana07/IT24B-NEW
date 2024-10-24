@@ -83,3 +83,4 @@ class TimestampedTodoList extends TodoList {
         taskItem.prepend(timestamp); // Add timestamp to the beginning
     }
 }
+document.addEventListener('DOMContentLoaded', () => new TimestampedTodoList());
