@@ -68,3 +68,18 @@ class TodoList {
 
 
 }
+
+
+class TimestampedTodoList extends TodoList {
+    addTask(taskText) {
+        super.addTask(taskText);
+        const taskItem = this.todoList.lastChild; // Get the newly added task
+        const timestamp = document.createElement('span');
+        timestamp.className = 'timestamp';
+        timestamp.textContent = `Date Added: ${new Date().toLocaleString()}`;
+        timestamp.style.display = 'block';
+        timestamp.style.marginTop = '0.5rem';
+        timestamp.style.color = 'gray';
+        taskItem.prepend(timestamp); // Add timestamp to the beginning
+    }
+}
