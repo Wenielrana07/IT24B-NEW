@@ -63,6 +63,32 @@
         
         <div id="weatherResults" class="row mt-4"></div> <!-- Container for weather results -->
       </div>
-      
+      <div class="modal fade" id="inputModal" tabindex="-1" aria-labelledby="inputModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="inputModalLabel">Input Via Modal</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="modalApiKey" class="form-label">API Key</label>
+                            <input type="password" class="form-control" id="modalApiKey" placeholder="Enter API Key" required>
+                            <div class="form-text">We'll never share your API key with anyone else.</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="modalCity" class="form-label">City</label>
+                            <input type="text" class="form-control" id="modalCity" placeholder="Enter city name" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button id="modalGetWeatherBtn" class="btn btn-primary" data-bs-dismiss="modal">Get Weather</button>
+                    <button id="modalGetLocationBtn" class="btn btn-secondary" data-bs-dismiss="modal">Use My Location</button>
+                </div>
+            </div>
+        </div>
+      </div>
 </body>
 </html>
