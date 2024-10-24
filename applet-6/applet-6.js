@@ -24,6 +24,11 @@ function displayWeather(data) {
     const weatherResults = document.getElementById('weatherResults');
     weatherResults.innerHTML = ''; // Clear previous results
 
+    const weatherCard = document.createElement('div');
+    weatherCard.className = 'weather-card card text-white mb-3';
+    weatherCard.style.display = 'block'; // Show the card
+
+
     
     // Get current date
     const date = new Date();
