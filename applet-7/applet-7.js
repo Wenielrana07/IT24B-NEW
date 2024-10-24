@@ -13,13 +13,27 @@ class TodoList {
             if (action) this[action + 'Task'](e);
         });
     }
-    
+
     addOrUpdateTask() {
         const taskText = this.todoInput.value.trim();
         if (taskText) {
             this.editingIndex === -1 ? this.addTask(taskText) : this.updateTask(taskText);
             this.todoInput.value = '';
         }
+    }
+
+    addTask(taskText) {
+        const listItem = document.createElement('li');
+        listItem.className = 'list-group-item todo-item';
+        listItem.innerHTML = `
+            <span class="task-text">${taskText}</span>
+            <div style="margin-top: 0.5rem;">
+                <button class="btn btn-success btn-sm doneButton">Done</button>
+                <button class="btn btn-warning btn-sm editButton">Edit</button>
+                <button class="btn btn-danger btn-sm removeButton">Remove</button>
+            </div>
+        `;
+        this.todoList.appendChild(listItem);
     }
 
 }
