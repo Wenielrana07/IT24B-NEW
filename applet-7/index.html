@@ -64,6 +64,32 @@
         </div>
         <ul id="todoList" class="list-group"></ul>
     </div>
+
+    <script>
+        document.getElementById('addButton').addEventListener('click', function() {
+            const todoInput = document.getElementById('todoInput');
+            const todoText = todoInput.value.trim();
+    
+            if (todoText) {
+                const li = document.createElement('li');
+                li.className = 'list-group-item d-flex justify-content-between align-items-center';
+                li.textContent = todoText;
+    
+                const completeButton = document.createElement('button');
+                completeButton.className = 'btn btn-success btn-sm';
+                completeButton.textContent = 'Complete';
+                completeButton.addEventListener('click', function() {
+                    li.classList.toggle('completed');
+                });
+    
+                li.appendChild(completeButton);
+                document.getElementById('todoList').appendChild(li);
+                todoInput.value = '';
+            } else {
+                alert('Please enter a task.');
+            }
+        });
+    </script>
     
     
 </body>
