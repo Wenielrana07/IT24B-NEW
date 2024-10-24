@@ -19,3 +19,7 @@ document.getElementById('getWeather').addEventListener('click', function() {
             alert(error.message);
         });
 });
+
+function displayWeather(data) {
+    
+}
