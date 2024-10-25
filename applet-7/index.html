@@ -60,6 +60,7 @@
             <textarea class="form-control" id="todoInput" placeholder="Add a new task" rows="3"></textarea>
             <div class="input-group-append" style="margin-left: .5rem;">
                 <button class="btn btn-primary" id="addButton">Add</button>
+                <button class="btn btn-danger ms-2" id="clearButton">Clear</button>
             </div>
         </div>
         <ul id="todoList" class="list-group"></ul>
@@ -89,6 +90,11 @@
                 alert('Please enter a task.');
             }
         });
+
+        
+    document.getElementById('clearButton').addEventListener('click', function() {
+        document.getElementById('todoList').innerHTML = ''; 
+    });
     </script>
     
     
